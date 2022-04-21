@@ -1,0 +1,14 @@
+{
+  "name": "justinbyrne/extra-artisan-commands",
+  "description": "Useful artisan commands for Laravel to help perform regular tasks",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Justin Byrne",
+      "email": "theskaterjesus@gmail.com",
+      "homepage": "https://justinbyrne.dev"
+    }
+  ],
+  "require": {}
+}
