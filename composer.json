@@ -10,5 +10,10 @@
       "homepage": "https://justinbyrne.dev"
     }
   ],
-  "require": {}
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "JustinByrne\\ExtraArtisanCommands\\": "src"
+    }
+  }
 }
