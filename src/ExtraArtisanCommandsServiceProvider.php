@@ -18,8 +18,6 @@ class ExtraArtisanCommandsServiceProvider extends PackageServiceProvider
         $package
             ->name('extra-artisan-commands')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_extra-artisan-commands_table')
             ->hasCommand(ExtraArtisanCommandsCommand::class);
     }
 }
