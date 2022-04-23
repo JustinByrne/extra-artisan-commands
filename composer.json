@@ -10,5 +10,7 @@
       "homepage": "https://justinbyrne.dev"
     }
   ],
-  "require": {}
+  "require-dev": {
+    "orchestra/testbench": "^7.4"
+  }
 }
