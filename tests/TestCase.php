@@ -3,8 +3,8 @@
 namespace JustinByrne\ExtraArtisanCommands\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use JustinByrne\ExtraArtisanCommands\ExtraArtisanCommandsServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
