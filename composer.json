@@ -10,6 +10,12 @@
       "homepage": "https://justinbyrne.dev"
     }
   ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "JustinByrne\\ExtraArtisanCommands\\": "src"
+    }
+  },
   "require-dev": {
     "orchestra/testbench": "^7.4"
   }
