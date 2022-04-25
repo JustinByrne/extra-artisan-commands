@@ -14,7 +14,7 @@ class ExtraArtisanCommandsServiceProvider extends PackageServiceProvider
             ->name('extra-artisan-commands')
             ->hasConfigFile()
             ->hasCommand(ExtraArtisanCommandsCommand::class);
-        
+
         if (config("extra-artisan-commands.is_user")) {
             $package->hasCommand(CreateUserCommand::class);
         }
