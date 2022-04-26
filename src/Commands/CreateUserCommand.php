@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 
 class CreateUserCommand extends Command
 {
-    public $signature = 'create:user';
+    public $signature = 'eac:create-user';
 
     public $description = 'Create new user';
 
