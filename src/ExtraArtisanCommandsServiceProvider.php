@@ -2,10 +2,10 @@
 
 namespace JustinByrne\ExtraArtisanCommands;
 
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
 use JustinByrne\ExtraArtisanCommands\Commands\CreateUserCommand;
 use JustinByrne\ExtraArtisanCommands\Commands\ExtraArtisanCommandsCommand;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class ExtraArtisanCommandsServiceProvider extends PackageServiceProvider
 {
