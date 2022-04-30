@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class CreateUserCommand extends Command
 {
-    public $signature = 'eac:create-user';
+    public $signature = 'create:user';
 
     public $description = 'Create new user';
 
