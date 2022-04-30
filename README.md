@@ -7,9 +7,10 @@
 
 Useful artisan commands for Laravel to help perform regular tasks.
 
-| Command       | Description                                     |
-| ------------- | ----------------------------------------------- |
-| `create:user` | Create new user using the options in the config |
+| Command               | Description                                     |
+| --------------------- | ----------------------------------------------- |
+| `create:user`         | Create new user using the options in the config |
+| `make:service {name}` | Create new service class                        |
 
 <!-- ## Support us
 
