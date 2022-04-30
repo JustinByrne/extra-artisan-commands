@@ -17,7 +17,7 @@ class CreateUserCommand extends Command
     {
         $user = [];
         $validation = [];
-        
+
         foreach (config('extra-artisan-commands.user_fields') as $field => $type) {
             if ($type == "password") {
                 $user[$field] = Hash::make($this->secret($field));
@@ -26,7 +26,6 @@ class CreateUserCommand extends Command
                 $user[$field] = $this->ask($field);
                 $validation[$field] = ["required", $type];
             }
-
         }
 
         $validator = Validator::make($user, $validation);
@@ -40,7 +39,7 @@ class CreateUserCommand extends Command
 
             return 1;
         }
-        
+
         $user = User::create($user);
 
         $this->info("User $user->name was created.");
