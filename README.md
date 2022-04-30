@@ -7,6 +7,10 @@
 
 Useful artisan commands for Laravel to help perform regular tasks.
 
+| Command       | Description                                     |
+| ------------- | ----------------------------------------------- |
+| `create:user` | Create new user using the options in the config |
+
 <!-- ## Support us
 
 [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/extra-artisan-commands.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/extra-artisan-commands)
