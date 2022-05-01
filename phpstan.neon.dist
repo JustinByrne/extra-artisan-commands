@@ -10,4 +10,6 @@ parameters:
     checkOctaneCompatibility: true
     checkModelProperties: true
     checkMissingIterableValueType: false
+    ignoreErrors:
+        - '#Call to static method create\(\) on an unknown class [a-zA-Z0-9\\_]+.#'
 
