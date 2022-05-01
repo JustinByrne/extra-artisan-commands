@@ -28,7 +28,7 @@ class MakeServiceCommand extends Command
 
         $contents = $this->getSourceFile();
 
-        if (! $this->files->exists($path)) {
+        if (!$this->files->exists($path)) {
             $this->files->put($path, $contents);
             $this->info("File : {$path} created");
         } else {
@@ -43,9 +43,25 @@ class MakeServiceCommand extends Command
 
     public function getStubVariables()
     {
+        $namespace = "App\\Services";
+        $service_name = $this->argument("name");
+
+        if (strpos($service_name, "/") !== false) {
+            $sections = explode("/", $service_name);
+
+            $service_name = end($sections);
+            array_pop($sections);
+
+            if (count($sections)) {
+                foreach ($sections as $section) {
+                    $namespace .= "\\" . $section;
+                }
+            }
+        }
+
         return [
-            "NAMESPACE" => "App\\Services",
-            "SERVICE_NAME" => $this->argument("name"),
+            "NAMESPACE" => $namespace,
+            "SERVICE_NAME" => $service_name,
         ];
     }
 
@@ -78,7 +94,7 @@ class MakeServiceCommand extends Command
 
     protected function makeDirectory($path)
     {
-        if (! $this->files->isDirectory($path)) {
+        if (!$this->files->isDirectory($path)) {
             $this->files->makeDirectory($path, 0777, true, true);
         }
 
