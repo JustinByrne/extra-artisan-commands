@@ -7,32 +7,12 @@
 
 Useful artisan commands for Laravel to help perform regular tasks.
 
-| Command               | Description                                     |
-| --------------------- | ----------------------------------------------- |
-| `create:user`         | Create new user using the options in the config |
-| `make:service {name}` | Create new service class                        |
-
-<!-- ## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/extra-artisan-commands.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/extra-artisan-commands)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards). -->
-
-<!-- ## Installation
+## Installation
 
 You can install the package via composer:
 
 ```bash
 composer require justinbyrne/extra-artisan-commands
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="extra-artisan-commands-migrations"
-php artisan migrate
 ```
 
 You can publish the config file with:
@@ -45,21 +25,32 @@ This is the contents of the published config file:
 
 ```php
 return [
+    /*
+    |--------------------------------------------------------------------------
+    | Create new user fields
+    |--------------------------------------------------------------------------
+    |
+    | The fields that are needed to create a new user, add or remove as
+    | required.
+    |
+    */
+    "user_fields" => [
+        "name" => "string",
+        "email" => "email",
+        "password" => "password",
+    ],
 ];
 ```
 
-Optionally, you can publish the views using
+## Usage
 
-```bash
-php artisan vendor:publish --tag="extra-artisan-commands-views"
-``` -->
+The package adds artisan commands all of which cab be ran with `php artisan` then any of the commands in the list below.
 
-<!-- ## Usage
-
-```php
-$extraArtisanCommands = new JustinByrne\ExtraArtisanCommands();
-echo $extraArtisanCommands->echoPhrase('Hello, JustinByrne!');
-``` -->
+| Command               | Description                                     |
+| --------------------- | ----------------------------------------------- |
+| `create:user`         | Create new user using the options in the config |
+| `make:service {name}` | Create new service class                        |
+| `make:action {name}`  | Create new action class                         |
 
 <!-- ## Testing
 
@@ -71,9 +62,9 @@ composer test
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
-## Contributing
+<!-- ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/spatie/.github/blob/main/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/spatie/.github/blob/main/CONTRIBUTING.md) for details. -->
 
 ## Security Vulnerabilities
 
