@@ -51,6 +51,7 @@ The package adds artisan commands all of which cab be ran with `php artisan` the
 | `create:user`         | Create new user using the options in the config |
 | `make:service {name}` | Create new service class                        |
 | `make:action {name}`  | Create new action class                         |
+| `make:trait {name}`   | Create new trait                                |
 
 <!-- ## Testing
 
