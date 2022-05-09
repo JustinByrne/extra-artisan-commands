@@ -56,7 +56,7 @@ class MakeEnumCommand extends Command
         if (strpos($enum_name, "/") !== false) {
             $sections = explode("/", $enum_name);
 
-            $service_name = end($sections);
+            $enum_name = end($sections);
             array_pop($sections);
 
             if (count($sections)) {
