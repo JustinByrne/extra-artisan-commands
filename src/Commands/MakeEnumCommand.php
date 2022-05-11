@@ -9,7 +9,7 @@ class MakeEnumCommand extends Command
 {
     public $signature = "make:enum {name} {type=string}";
 
-    public $description = "Create a new enum class";
+    public $description = "Create a new enum";
 
     protected $files;
 
