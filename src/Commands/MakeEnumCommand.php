@@ -24,9 +24,9 @@ class MakeEnumCommand extends Command
 
     public function handle()
     {
-
-        if ($this->validate() === false)
+        if ($this->validate() === false) {
             return;
+        }
 
         $path = $this->getSourceFilePath();
 
@@ -34,7 +34,7 @@ class MakeEnumCommand extends Command
 
         $contents = $this->getSourceFile();
 
-        if (!$this->files->exists($path)) {
+        if (! $this->files->exists($path)) {
             $this->files->put($path, $contents);
             $this->info("File : {$path} created");
         } else {
@@ -75,7 +75,9 @@ class MakeEnumCommand extends Command
 
     public function getSourceFile()
     {
-        return $this->getStubContents($this->getStubPath(), $this->getStubVariables()
+        return $this->getStubContents(
+            $this->getStubPath(),
+            $this->getStubVariables()
         );
     }
 
@@ -97,7 +99,7 @@ class MakeEnumCommand extends Command
 
     protected function makeDirectory($path)
     {
-        if (!$this->files->isDirectory($path)) {
+        if (! $this->files->isDirectory($path)) {
             $this->files->makeDirectory($path, 0777, true, true);
         }
 
@@ -106,13 +108,15 @@ class MakeEnumCommand extends Command
 
     protected function validate()
     {
-        if ((double)phpversion() < 8.1) {
+        if ((float)phpversion() < 8.1) {
             $this->error('Enumerations are only allowed since PHP 8.1, your PHP version is: ' . phpversion() . '!');
+
             return false;
         }
 
-        if (!in_array($this->argument("type"), $this->types)) {
+        if (! in_array($this->argument("type"), $this->types)) {
             $this->error('Enum backing type must be \'int\' or \'string\'');
+
             return false;
         };
     }
