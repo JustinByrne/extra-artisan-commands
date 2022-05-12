@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.1.0 - 2022/05/12
+
+### Added
+
+-   Added `make:enum` command to create an enum file.
+
 ## v1.0.0 - 2022/05/07
 
 ### Added
