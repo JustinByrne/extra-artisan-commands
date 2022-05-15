@@ -47,12 +47,12 @@ return [
 The package adds artisan commands all of which cab be ran with `php artisan` then any of the commands in the list below.
 
 | Command                   | Description                                     |
-|---------------------------|-------------------------------------------------|
+| ------------------------- | ----------------------------------------------- |
 | `create:user`             | Create new user using the options in the config |
-| `make:service {name}`     | Create new service class                        |
 | `make:action {name}`      | Create new action class                         |
-| `make:trait {name}`       | Create new trait                                |
 | `make:enum {name} {type}` | Create new enum                                 |
+| `make:service {name}`     | Create new service class                        |
+| `make:trait {name}`       | Create new trait                                |
 
 <!-- ## Testing
 
