@@ -2,13 +2,13 @@
 
 namespace JustinByrne\ExtraArtisanCommands;
 
-use JustinByrne\ExtraArtisanCommands\Commands\CreateUserCommand;
-use JustinByrne\ExtraArtisanCommands\Commands\MakeActionCommand;
-use JustinByrne\ExtraArtisanCommands\Commands\MakeEnumCommand;
-use JustinByrne\ExtraArtisanCommands\Commands\MakeServiceCommand;
-use JustinByrne\ExtraArtisanCommands\Commands\MakeTraitCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use JustinByrne\ExtraArtisanCommands\Commands\MakeEnumCommand;
+use JustinByrne\ExtraArtisanCommands\Commands\MakeTraitCommand;
+use JustinByrne\ExtraArtisanCommands\Commands\CreateUserCommand;
+use JustinByrne\ExtraArtisanCommands\Commands\MakeActionCommand;
+use JustinByrne\ExtraArtisanCommands\Commands\MakeServiceCommand;
 
 class ExtraArtisanCommandsServiceProvider extends PackageServiceProvider
 {
