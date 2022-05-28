@@ -9,16 +9,19 @@ use Illuminate\Support\Facades\Validator;
 
 class CreateUserCommand extends Command
 {
-    public $signature = 'create:user';
+    public $signature = "create:user";
 
-    public $description = 'Create new user';
+    public $description = "Create new user";
 
     public function handle(): int
     {
         $user = [];
         $validation = [];
 
-        foreach (config('extra-artisan-commands.user_fields') as $field => $type) {
+        foreach (
+            config("extra-artisan-commands.user_fields")
+            as $field => $type
+        ) {
             if ($type == "password") {
                 $user[$field] = Hash::make($this->secret($field));
                 $validation[$field] = ["required"];
@@ -31,13 +34,13 @@ class CreateUserCommand extends Command
         $validator = Validator::make($user, $validation);
 
         if ($validator->fails()) {
-            $this->info('User not created. See error messages below:');
+            $this->warn("User not created. See error messages below:");
 
             foreach ($validator->errors()->all() as $error) {
                 $this->error($error);
             }
 
-            return 1;
+            return self::FAILURE;
         }
 
         $user = User::create($user);

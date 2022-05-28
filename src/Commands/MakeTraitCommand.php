@@ -28,11 +28,15 @@ class MakeTraitCommand extends Command
 
         $contents = $this->getSourceFile();
 
-        if (! $this->files->exists($path)) {
+        if (!$this->files->exists($path)) {
             $this->files->put($path, $contents);
-            $this->info("File : {$path} created");
+            $this->info("Trait created successfully.");
+
+            return self::SUCCESS;
         } else {
-            $this->info("File : {$path} already exits");
+            $this->error("Trait already exists!");
+
+            return self::FAILURE;
         }
     }
 
@@ -91,7 +95,7 @@ class MakeTraitCommand extends Command
 
     protected function makeDirectory($path)
     {
-        if (! $this->files->isDirectory($path)) {
+        if (!$this->files->isDirectory($path)) {
             $this->files->makeDirectory($path, 0777, true, true);
         }
 

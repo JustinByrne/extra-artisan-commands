@@ -13,7 +13,7 @@ class MakeEnumCommand extends Command
 
     protected $files;
 
-    protected $types = ['string', 'int'];
+    protected $types = ["string", "int"];
 
     public function __construct(Filesystem $files)
     {
@@ -34,11 +34,15 @@ class MakeEnumCommand extends Command
 
         $contents = $this->getSourceFile();
 
-        if (! $this->files->exists($path)) {
+        if (!$this->files->exists($path)) {
             $this->files->put($path, $contents);
-            $this->info("File : {$path} created");
+            $this->info("Enum created successfully.");
+
+            return self::SUCCESS;
         } else {
-            $this->info("File : {$path} already exits");
+            $this->error("Enum already exists!");
+
+            return self::FAILURE;
         }
     }
 
@@ -77,7 +81,7 @@ class MakeEnumCommand extends Command
     {
         return $this->getStubContents(
             $this->getStubPath(),
-            $this->getStubVariables()
+            $this->getStubVariables(),
         );
     }
 
@@ -99,7 +103,7 @@ class MakeEnumCommand extends Command
 
     protected function makeDirectory($path)
     {
-        if (! $this->files->isDirectory($path)) {
+        if (!$this->files->isDirectory($path)) {
             $this->files->makeDirectory($path, 0777, true, true);
         }
 
@@ -108,16 +112,20 @@ class MakeEnumCommand extends Command
 
     protected function validate()
     {
-        if ((float)phpversion() < 8.1) {
-            $this->error('Enumerations are only allowed since PHP 8.1, your PHP version is: ' . phpversion() . '!');
+        if ((float) phpversion() < 8.1) {
+            $this->error(
+                "Enumerations are only allowed since PHP 8.1, your PHP version is: " .
+                    phpversion() .
+                    "!",
+            );
 
             return false;
         }
 
-        if (! in_array($this->argument("type"), $this->types)) {
+        if (!in_array($this->argument("type"), $this->types)) {
             $this->error('Enum backing type must be \'int\' or \'string\'');
 
             return false;
-        };
+        }
     }
 }
