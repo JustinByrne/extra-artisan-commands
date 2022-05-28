@@ -34,7 +34,7 @@ class MakeEnumCommand extends Command
 
         $contents = $this->getSourceFile();
 
-        if (!$this->files->exists($path)) {
+        if (! $this->files->exists($path)) {
             $this->files->put($path, $contents);
             $this->info("Enum created successfully.");
 
@@ -103,7 +103,7 @@ class MakeEnumCommand extends Command
 
     protected function makeDirectory($path)
     {
-        if (!$this->files->isDirectory($path)) {
+        if (! $this->files->isDirectory($path)) {
             $this->files->makeDirectory($path, 0777, true, true);
         }
 
@@ -122,7 +122,7 @@ class MakeEnumCommand extends Command
             return false;
         }
 
-        if (!in_array($this->argument("type"), $this->types)) {
+        if (! in_array($this->argument("type"), $this->types)) {
             $this->error('Enum backing type must be \'int\' or \'string\'');
 
             return false;
