@@ -25,7 +25,7 @@ class MakeEnumCommand extends Command
     public function handle()
     {
         if ($this->validate() === false) {
-            return;
+            return self::FAILURE;
         }
 
         $path = $this->getSourceFilePath();
