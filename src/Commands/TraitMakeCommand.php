@@ -5,11 +5,11 @@ namespace JustinByrne\ExtraArtisanCommands\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 
-class MakeActionCommand extends Command
+class TraitMakeCommand extends Command
 {
-    public $signature = "make:action {name}";
+    public $signature = "make:trait {name}";
 
-    public $description = "Create a new action class";
+    public $description = "Create a new trait";
 
     protected $files;
 
@@ -28,13 +28,13 @@ class MakeActionCommand extends Command
 
         $contents = $this->getSourceFile();
 
-        if (! $this->files->exists($path)) {
+        if (!$this->files->exists($path)) {
             $this->files->put($path, $contents);
-            $this->info("Action created successfully.");
+            $this->info("Trait created successfully.");
 
             return self::SUCCESS;
         } else {
-            $this->error("Action already exists!");
+            $this->error("Trait already exists!");
 
             return self::FAILURE;
         }
@@ -42,18 +42,18 @@ class MakeActionCommand extends Command
 
     public function getStubPath()
     {
-        return __DIR__ . "/../stubs/action.stub";
+        return __DIR__ . "/../stubs/trait.stub";
     }
 
     public function getStubVariables()
     {
-        $namespace = "App\\Actions";
-        $action_name = $this->argument("name");
+        $namespace = "App\\Traits";
+        $trait_name = $this->argument("name");
 
-        if (strpos($action_name, "/") !== false) {
-            $sections = explode("/", $action_name);
+        if (strpos($trait_name, "/") !== false) {
+            $sections = explode("/", $trait_name);
 
-            $action_name = end($sections);
+            $trait_name = end($sections);
             array_pop($sections);
 
             if (count($sections)) {
@@ -65,7 +65,7 @@ class MakeActionCommand extends Command
 
         return [
             "NAMESPACE" => $namespace,
-            "ACTION_NAME" => $action_name,
+            "TRAIT_NAME" => $trait_name,
         ];
     }
 
@@ -90,15 +90,12 @@ class MakeActionCommand extends Command
 
     public function getSourceFilePath()
     {
-        return base_path("app/Actions") .
-            "/" .
-            $this->argument("name") .
-            ".php";
+        return base_path("app/Traits") . "/" . $this->argument("name") . ".php";
     }
 
     protected function makeDirectory($path)
     {
-        if (! $this->files->isDirectory($path)) {
+        if (!$this->files->isDirectory($path)) {
             $this->files->makeDirectory($path, 0777, true, true);
         }
 

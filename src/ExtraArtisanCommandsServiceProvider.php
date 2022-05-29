@@ -4,11 +4,11 @@ namespace JustinByrne\ExtraArtisanCommands;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use JustinByrne\ExtraArtisanCommands\Commands\MakeEnumCommand;
-use JustinByrne\ExtraArtisanCommands\Commands\MakeTraitCommand;
-use JustinByrne\ExtraArtisanCommands\Commands\CreateUserCommand;
-use JustinByrne\ExtraArtisanCommands\Commands\MakeActionCommand;
-use JustinByrne\ExtraArtisanCommands\Commands\MakeServiceCommand;
+use JustinByrne\ExtraArtisanCommands\Commands\EnumMakeCommand;
+use JustinByrne\ExtraArtisanCommands\Commands\TraitMakeCommand;
+use JustinByrne\ExtraArtisanCommands\Commands\ActionMakeCommand;
+use JustinByrne\ExtraArtisanCommands\Commands\UserCreateCommand;
+use JustinByrne\ExtraArtisanCommands\Commands\ServiceMakeCommand;
 
 class ExtraArtisanCommandsServiceProvider extends PackageServiceProvider
 {
@@ -17,10 +17,10 @@ class ExtraArtisanCommandsServiceProvider extends PackageServiceProvider
         $package
             ->name("extra-artisan-commands")
             ->hasConfigFile()
-            ->hasCommand(CreateUserCommand::class)
-            ->hasCommand(MakeServiceCommand::class)
-            ->hasCommand(MakeActionCommand::class)
-            ->hasCommand(MakeTraitCommand::class)
-            ->hasCommand(MakeEnumCommand::class);
+            ->hasCommand(ActionMakeCommand::class)
+            ->hasCommand(EnumMakeCommand::class)
+            ->hasCommand(ServiceMakeCommand::class)
+            ->hasCommand(TraitMakeCommand::class)
+            ->hasCommand(UserCreateCommand::class);
     }
 }

@@ -5,15 +5,13 @@ namespace JustinByrne\ExtraArtisanCommands\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 
-class MakeEnumCommand extends Command
+class ActionMakeCommand extends Command
 {
-    public $signature = "make:enum {name} {type=string}";
+    public $signature = "make:action {name}";
 
-    public $description = "Create a new enum";
+    public $description = "Create a new action class";
 
     protected $files;
-
-    protected $types = ["string", "int"];
 
     public function __construct(Filesystem $files)
     {
@@ -24,10 +22,6 @@ class MakeEnumCommand extends Command
 
     public function handle()
     {
-        if ($this->validate() === false) {
-            return self::FAILURE;
-        }
-
         $path = $this->getSourceFilePath();
 
         $this->makeDirectory(dirname($path));
@@ -36,11 +30,11 @@ class MakeEnumCommand extends Command
 
         if (!$this->files->exists($path)) {
             $this->files->put($path, $contents);
-            $this->info("Enumeration created successfully.");
+            $this->info("Action created successfully.");
 
             return self::SUCCESS;
         } else {
-            $this->error("Enumeration already exists!");
+            $this->error("Action already exists!");
 
             return self::FAILURE;
         }
@@ -48,19 +42,18 @@ class MakeEnumCommand extends Command
 
     public function getStubPath()
     {
-        return __DIR__ . "/../stubs/enum.stub";
+        return __DIR__ . "/../stubs/action.stub";
     }
 
     public function getStubVariables()
     {
-        $namespace = "App\\Enums";
-        $enum_name = $this->argument("name");
-        $type = $this->argument("type");
+        $namespace = "App\\Actions";
+        $action_name = $this->argument("name");
 
-        if (strpos($enum_name, "/") !== false) {
-            $sections = explode("/", $enum_name);
+        if (strpos($action_name, "/") !== false) {
+            $sections = explode("/", $action_name);
 
-            $enum_name = end($sections);
+            $action_name = end($sections);
             array_pop($sections);
 
             if (count($sections)) {
@@ -72,8 +65,7 @@ class MakeEnumCommand extends Command
 
         return [
             "NAMESPACE" => $namespace,
-            "ENUM_NAME" => $enum_name,
-            "TYPE" => $type,
+            "ACTION_NAME" => $action_name,
         ];
     }
 
@@ -98,7 +90,10 @@ class MakeEnumCommand extends Command
 
     public function getSourceFilePath()
     {
-        return base_path("app/Enums") . "/" . $this->argument("name") . ".php";
+        return base_path("app/Actions") .
+            "/" .
+            $this->argument("name") .
+            ".php";
     }
 
     protected function makeDirectory($path)
@@ -108,24 +103,5 @@ class MakeEnumCommand extends Command
         }
 
         return $path;
-    }
-
-    protected function validate()
-    {
-        if ((float) phpversion() < 8.1) {
-            $this->error(
-                "Enumerations are only allowed since PHP 8.1, your PHP version is: " .
-                    phpversion() .
-                    "!",
-            );
-
-            return false;
-        }
-
-        if (!in_array($this->argument("type"), $this->types)) {
-            $this->error('Enum backing type must be \'int\' or \'string\'');
-
-            return false;
-        }
     }
 }

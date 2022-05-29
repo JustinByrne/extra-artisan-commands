@@ -7,7 +7,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class CreateUserCommand extends Command
+class UserCreateCommand extends Command
 {
     public $signature = "create:user";
 
