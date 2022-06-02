@@ -1,5 +1,18 @@
 # Changelog
 
+## V1.2.0 - 2022/06/02 - 2022-06-02
+
+### Added
+
+- Tests for all the make commands
+- Added return `SUCCESS` and `FAILURE` values to help with testing
+
+### Changed
+
+- Renamed all the commands to match Laravel styling e.g. `makeServiceCommand`
+- Moved commands into an alphabetically order
+- Changed cs to order imports alphabetically
+
 ## v1.1.0 - 2022/05/12
 
 ### Added
