@@ -13,29 +13,29 @@ beforeEach(function () {
 });
 
 it("created a new enum", function () {
-    $enumCommand = $this->artisan("make:enum", [
-        "name" => "Cheese",
-    ]);
-
     if ((float) phpversion() < 8.1) {
-        $enumCommand->assertFailed();
+        $this->artisan("make:enum", [
+            "name" => "Cheese",
+        ])->assertFailed();
         expect(file_exists(base_path("app/Enums/Cheese.php")))->toBeFalse();
     } else {
-        $enumCommand->assertSuccessful();
+        $this->artisan("make:enum", [
+            "name" => "Cheese",
+        ])->assertSuccessful();
         expect(file_exists(base_path("app/Enums/Cheese.php")))->toBeTrue();
     }
 });
 
 it("failed when the enum already exists", function () {
-    $enumCommand = $this->artisan("make:enum", [
-        "name" => "Cracker",
-    ]);
-
     if ((float) phpversion() < 8.1) {
-        $enumCommand->assertFailed();
+        $this->artisan("make:enum", [
+            "name" => "Cracker",
+        ])->assertFailed();
         expect(file_exists(base_path("app/Enums/Cracker.php")))->toBeFalse();
     } else {
-        $enumCommand->assertSuccessful();
+        $this->artisan("make:enum", [
+            "name" => "Cracker",
+        ])->assertSuccessful();
         expect(file_exists(base_path("app/Enums/Cracker.php")))->toBeTrue();
         $this->artisan("make:enum", [
             "name" => "Cracker",
