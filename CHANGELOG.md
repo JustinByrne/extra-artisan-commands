@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.3.0 - 2022-10-10
+
+### Added
+
+- Allowed plugins into the `composer.json` file
+
+### Changed
+
+- php cs fixer version number
+- dependabot github action version number
+
+### Removed
+
+- `package.json` and `package-lock.json`
+- prettier config file
+
 ## V1.2.0 - 2022/06/02
 
 ### Added
