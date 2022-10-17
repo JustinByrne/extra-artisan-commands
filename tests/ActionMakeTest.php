@@ -1,33 +1,35 @@
 <?php
 
+use Illuminate\Support\Facades\File;
+
 beforeEach(function () {
-    if (is_dir(base_path("app/Actions"))) {
-        $actions = glob(base_path("app/Actions/**"));
+    if (is_dir(app_path('Actions'))) {
+        $actions = glob(app_path('Actions/**'));
 
         foreach ($actions as $action) {
             unlink($action);
         }
 
-        rmdir(base_path("app/Actions"));
+        rmdir(app_path('Actions'));
     }
 });
 
-it("created a new action", function () {
-    $this->artisan("make:action", [
-        "name" => "Cheese",
+it('created a new action', function () {
+    $this->artisan('make:action', [
+        'name' => 'Cheese',
     ])->assertSuccessful();
 
-    expect(file_exists(base_path("app/Actions/Cheese.php")))->toBeTrue();
+    expect(File::exists(app_path('Actions/Cheese.php')))->toBeTrue();
 });
 
-it("failed when the action already exists", function () {
-    $this->artisan("make:action", [
-        "name" => "Cracker",
+it('failed when the action already exists', function () {
+    $this->artisan('make:action', [
+        'name' => 'Cracker',
     ])->assertSuccessful();
 
-    expect(file_exists(base_path("app/Actions/Cracker.php")))->toBeTrue();
+    expect(File::exists(app_path('Actions/Cracker.php')))->toBeTrue();
 
-    $this->artisan("make:action", [
-        "name" => "Cracker",
+    $this->artisan('make:action', [
+        'name' => 'Cracker',
     ])->assertFailed();
 });

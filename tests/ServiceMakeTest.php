@@ -1,33 +1,35 @@
 <?php
 
+use Illuminate\Support\Facades\File;
+
 beforeEach(function () {
-    if (is_dir(base_path("app/Services"))) {
-        $services = glob(base_path("app/Services/**"));
+    if (is_dir(app_path('Services'))) {
+        $services = glob(app_path('Services/**'));
 
         foreach ($services as $service) {
             unlink($service);
         }
 
-        rmdir(base_path("app/Services"));
+        rmdir(app_path('Services'));
     }
 });
 
-it("created a new service", function () {
-    $this->artisan("make:service", [
-        "name" => "Cheese",
+it('created a new service', function () {
+    $this->artisan('make:service', [
+        'name' => 'Cheese',
     ])->assertSuccessful();
 
-    expect(file_exists(base_path("app/Services/Cheese.php")))->toBeTrue();
+    expect(File::exists(app_path('Services/Cheese.php')))->toBeTrue();
 });
 
-it("failed when the service already exists", function () {
-    $this->artisan("make:service", [
-        "name" => "Cracker",
+it('failed when the service already exists', function () {
+    $this->artisan('make:service', [
+        'name' => 'Cracker',
     ])->assertSuccessful();
 
-    expect(file_exists(base_path("app/Services/Cracker.php")))->toBeTrue();
+    expect(File::exists(app_path('Services/Cracker.php')))->toBeTrue();
 
-    $this->artisan("make:service", [
-        "name" => "Cracker",
+    $this->artisan('make:service', [
+        'name' => 'Cracker',
     ])->assertFailed();
 });

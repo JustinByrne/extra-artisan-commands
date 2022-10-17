@@ -1,33 +1,35 @@
 <?php
 
+use Illuminate\Support\Facades\File;
+
 beforeEach(function () {
-    if (is_dir(base_path("app/Traits"))) {
-        $traits = glob(base_path("app/Traits/**"));
+    if (is_dir(app_path('Traits'))) {
+        $traits = glob(app_path('Traits/**'));
 
         foreach ($traits as $trait) {
             unlink($trait);
         }
 
-        rmdir(base_path("app/Traits"));
+        rmdir(app_path('Traits'));
     }
 });
 
-it("created a new trait", function () {
-    $this->artisan("make:trait", [
-        "name" => "Cheese",
+it('created a new trait', function () {
+    $this->artisan('make:trait', [
+        'name' => 'Cheese',
     ])->assertSuccessful();
 
-    expect(file_exists(base_path("app/Traits/Cheese.php")))->toBeTrue();
+    expect(File::exists(app_path('Traits/Cheese.php')))->toBeTrue();
 });
 
-it("failed when the trait already exists", function () {
-    $this->artisan("make:trait", [
-        "name" => "Cracker",
+it('failed when the trait already exists', function () {
+    $this->artisan('make:trait', [
+        'name' => 'Cracker',
     ])->assertSuccessful();
 
-    expect(file_exists(base_path("app/Traits/Cracker.php")))->toBeTrue();
+    expect(File::exists(app_path('Traits/Cracker.php')))->toBeTrue();
 
-    $this->artisan("make:trait", [
-        "name" => "Cracker",
+    $this->artisan('make:trait', [
+        'name' => 'Cracker',
     ])->assertFailed();
 });
