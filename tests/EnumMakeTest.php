@@ -43,7 +43,7 @@ it('failed when the enum already exists', function () {
         ])->assertSuccessful();
 
         expect(File::exists(app_path('Enums/Cracker.php')))->toBeTrue();
-        
+
         $this->artisan('make:enum', [
             'name' => 'Cracker',
         ])->assertFailed();
