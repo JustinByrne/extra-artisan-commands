@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.3.1 - 2022-12-10
+
+Small bug fixes and improvements to tests
+
 ## v1.3.0 - 2022-10-10
 
 ### Added
