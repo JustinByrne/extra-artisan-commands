@@ -1,8 +1,8 @@
 # Extra Artisan Commands
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/justinbyrne/extra-artisan-commands.svg?style=flat-square)](https://packagist.org/packages/justinbyrne/extra-artisan-commands)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/justinbyrne/extra-artisan-commands/run-tests?label=tests)](https://github.com/justinbyrne/extra-artisan-commands/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/justinbyrne/extra-artisan-commands/Check%20&%20fix%20styling?label=code%20style)](https://github.com/justinbyrne/extra-artisan-commands/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![GitHub Tests Action Status](https://github.com/JustinByrne/extra-artisan-commands/actions/workflows/run-tests.yml/badge.svg)](https://github.com/JustinByrne/extra-artisan-commands/actions/workflows/run-tests.yml)
+[![GitHub Code Style Action Status](https://github.com/JustinByrne/extra-artisan-commands/actions/workflows/php-cs-fixer.yml/badge.svg)](https://github.com/JustinByrne/extra-artisan-commands/actions/workflows/php-cs-fixer.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/justinbyrne/extra-artisan-commands.svg?style=flat-square)](https://packagist.org/packages/justinbyrne/extra-artisan-commands)
 
 Useful artisan commands for Laravel to help perform regular tasks.
