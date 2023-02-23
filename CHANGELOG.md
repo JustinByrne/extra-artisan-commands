@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.0.0 - 2023-02-23
+
+Updated tests and composer to work with Laravel 10
+
 ## v1.3.1 - 2022-12-10
 
 Small bug fixes and improvements to tests
