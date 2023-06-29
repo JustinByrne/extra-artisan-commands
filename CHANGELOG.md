@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1.0 - 2023-06-29
+
+Minor improvements to the output of the console commands. These now provide a very similar output that you would get with the default laravel commands.
+
 ## v2.0.0 - 2023-02-23
 
 Updated tests and composer to work with Laravel 10
