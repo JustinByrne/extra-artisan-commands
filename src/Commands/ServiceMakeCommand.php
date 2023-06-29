@@ -30,11 +30,11 @@ class ServiceMakeCommand extends Command
 
         if (! $this->files->exists($path)) {
             $this->files->put($path, $contents);
-            $this->info("Service created successfully.");
+            $this->components->info(sprintf('Service [%s] created successfully.', $path));
 
             return self::SUCCESS;
         } else {
-            $this->error("Service already exists!");
+            $this->components->error(sprintf('Service [%s] already exists!', $path));
 
             return self::FAILURE;
         }

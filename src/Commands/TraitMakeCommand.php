@@ -30,11 +30,11 @@ class TraitMakeCommand extends Command
 
         if (! $this->files->exists($path)) {
             $this->files->put($path, $contents);
-            $this->info("Trait created successfully.");
+            $this->components->info(sprintf('Trait [%s] created successfully.', $path));
 
             return self::SUCCESS;
         } else {
-            $this->error("Trait already exists!");
+            $this->components->error(sprintf('Trait [%s] already exists!', $path));
 
             return self::FAILURE;
         }

@@ -36,11 +36,11 @@ class EnumMakeCommand extends Command
 
         if (! $this->files->exists($path)) {
             $this->files->put($path, $contents);
-            $this->info("Enumeration created successfully.");
+            $this->components->info(sprintf('Enumeration [%s] created successfully.', $path));
 
             return self::SUCCESS;
         } else {
-            $this->error("Enumeration already exists!");
+            $this->components->error(sprintf('Enumeration [%s] already exists!', $path));
 
             return self::FAILURE;
         }
